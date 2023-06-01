@@ -1,0 +1,134 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Messages</title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="{% static '/css/MessagesStyle.css' %}"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="icon" href="{% static '/images/uiss_logo_minimalist.svg'%}" type="image/icon type">
+  <script src="https://use.fontawesome.com/b2310d6796.js"></script>
+  <style>
+    td a  {
+      display:inline;
+    }
+    .success-message {
+      color: green;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .mybtn{
+        width:40%;
+        height:3em;
+        margin-bottom:-2.2em;
+    }
+    .mybtn button{
+      margin-top:1em;
+      display:inline;
+      width:30%;
+      height:3em;
+      background-color:#5885AF;      ;
+      color:white;
+    }
+    .mybtn button:hover{
+      cursor:pointer;
+    }
+    .myDiv {
+        width:50%;
+        min-height:20em;
+        max-height:30em;
+        margin-left:25%;
+        margin-top:10em;
+        background-color: white;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+      #subject{
+          padding-top:0.7em;
+          padding-left:1em;
+          
+        }
+        .myDiv p{
+              padding-left:2em;
+              padding-top:1em;
+        }
+        .button ,.buttondel{
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          
+        }
+        .buttons,.buttondel{
+          position: absolute;
+          bottom: 1em;
+          right:3em;
+        }
+        .confirmstring{
+            margin:2em 0 0 1em;
+            font-size:1.5em;
+            padding-top:1em;
+          }
+        .buttondel{
+            height:3em;
+            maring-left:2px;
+        }
+  </style>
+
+</head>
+<body>
+ 
+
+  <div class="container">
+
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src="{% static '/images/uiss_logo.svg' %}">
+         
+        </a></li>
+        <li><a href="{% url 'StudentDashboard'%}">
+          <i class="fa fa-home"></i>
+          <span class="nav-item">Dashboard</span>
+        </a></li>
+        <li><a href="{%url 'create'%}">
+          <i class="fa fa-envelope"></i>
+          <span class="nav-item">Messages</span>
+            </a>
+      </li>
+        <li><a href="{%url 'offletter'%}">
+            <i class="fa fa-file"></i>
+            <span class="nav-item">Official Letter</span>
+          </a></li>
+          <li><a href="{%url 'InternOpportunities'%}">
+            <i class="fa fa-tasks"></i>
+            <span class="nav-item">Opportunities</span>
+          </a></li>
+        <li><a href="{%  url 'logout'%}" class="logout">
+          <i class="fa fa-sign-out"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+      </ul>
+    </nav>
+
+    <section class="main">
+      {%block content%}
+      {%endblock%}
+      
+    </section>
+
+    
+  
+  </div>
+
+</body>
+</html>

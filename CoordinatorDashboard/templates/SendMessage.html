@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div class="mybtn">
+    <button onclick="location.href='{%url 'CoordinatorMessages'%}'" type="button">Incoming Messages</button>
+    <button onclick="location.href='{%url 'outgoing'%}'" type="button">Outgoing Messages</button>
+ </div> 
+ <br><br>
+<div class="main-top">
+    <h1>Send a Message</h1>
+    
+  </div>
+  <div class="users_form">
+    <div class="container_form">
+        <form method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+          <label for="receiver">Send To</label>
+          <select id="receiver" name="Receiver">
+            {% for student in students %}
+             <option value="{{ student.id }}">{{ student.FullName }}</option>
+            {% endfor %}
+          </select>
+          <label for="subject">Subject</label>
+          <input type="text" id="sub" name="subject" placeholder="Subject">
+          <label for="content">Message</label>
+          <textarea id="message" name="Message_content" placeholder="Write your message here" style="height:200px"></textarea>
+          <input type="file" id="myFile" name="Message_file">
+          <input type="submit" value="Send">
+      
+        </form>
+      </div>
+      
+    </div>
+{%endblock%}

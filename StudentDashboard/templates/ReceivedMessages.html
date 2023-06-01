@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+
+{%block content %}
+<div class="mybtn">
+    <button onclick="location.href='{%url 'create'%}'" type="button">New Message</button>
+    <button onclick="location.href='{%url 'sentm'%}'" type="button">Outgoing Messages</button>
+  </div><br><br>
+<div class="main-top">
+    <h1>Received Messages</h1>
+    
+  </div>
+  <div class="users_form" >
+    <div class="container_form" id="messages">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>From</th>
+                <th>Subject</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for receive in received%}
+              <tr>
+                <td>{{receive.sender.FullName}}</td>
+                <td>{{receive.subject}}</td>
+                <td><a href="{%url 'viewI' pk=receive.id%}"><i class="fa fa-eye"></i></a><a href="test"><i class="fa fa-reply"></i></a> <a href="{%url 'deletr' pk=receive.id%}"><i class="fa fa-trash"></i></a></td>
+              </tr>
+              {%endfor%}
+            
+            </tbody>
+          </table>
+      </div>
+      
+    </div>
+   
+  </div>
+</div>
+{%endblock%}

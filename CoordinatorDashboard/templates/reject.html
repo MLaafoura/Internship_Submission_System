@@ -1,0 +1,24 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div class="main-top">
+    <h1>Rejection Reason</h1>
+    
+  </div>
+  <div class="users_form" > 
+    <div class="container_form" style="height:25em;">
+        <form method="post" enctype="multipart/form-data">
+
+            {%csrf_token%} 
+          <input type="text" name="Status" value="Rejected" hidden>
+          <input type="text" name="ApplicationFormUpload" value="0" hidden>
+          <input type="text" name="Notification" value="Your Application is rejected" hidden>
+          <label for="content">Rejection Reason</label>
+          <textarea id="message" name="Rejection_reason" placeholder="Write your message here" style="height:200px"></textarea>
+          <input type="submit" name="submit" value="Send">
+      
+        </form>
+      </div>
+      
+    </div>
+{%endblock%}

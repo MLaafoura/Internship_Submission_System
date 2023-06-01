@@ -1,0 +1,87 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coordinator Dashboard</title>
+  <link rel="stylesheet" href="{%static '/css/CoordinatorOffLetter.css'%}" />
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link rel="icon" href="{%static '/images/uiss_logo_minimalist.svg'%}" type="image/icon type">
+  <script>
+    function openForm() {
+      document.getElementById("offlet_request").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("offlet_request").style.display = "none";
+    }
+    </script>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src="{%static '/images/uiss_logo.svg'%}">
+         
+        </a></li>
+        <li><a href="{%url 'CoordinatorDashboard'%}">
+          <i class="fas fa-home"></i>
+          <span class="nav-item">Dashboard</span>
+        </a></li>
+        <li><a href="{%url 'CoordinatorMessages'%}">
+          <i class="fas fa-envelope"></i>
+          <span class="nav-item">Messages</span>
+        </a></li>
+        <li><a href="{%url 'CoordinatorOffLetter'%}">
+            <i class="fas fa-file"></i>
+            <span class="nav-item">Official Letter</span>
+          </a></li>
+        <li><a href="#" class="logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+      </ul>
+    </nav>
+
+
+    <section class="main">
+      <div class="main-top">
+        <h1>{{user.first_name}}</h1>
+        
+      </div>
+      <section class="applications">
+        <div class="applications-list">
+          <h1>Official Letter Requests</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Official Letter</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for request in offrequests%}
+              <tr>
+                <td>{{request.student.user}}</td>
+                <td><button><a href="{%url 'generateoffletter' pk=request.student_id%}" style="width:3em; text-decoration=none;">Generate</a></button> &nbsp; 
+                </td>
+               
+                <td>Generated
+                  <button style="border:none;text-decoration:underline;">Download</button> 
+                </td>
+              </tr>
+              {%endfor%}
+              
+            
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </div>
+ 
+</body>
+</html>

@@ -1,0 +1,38 @@
+{%extends "baseco.html"%}
+{%load static%}
+{%block content%}
+ 
+<section class="main">
+  {% if messages %}
+      <div class="success-message">
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+    {% endif %} 
+    <div class="main-top">
+      <h1>Add Opportunity</h1>
+      
+    </div>
+    <div class="users_form">
+      <div class="container_form" style="height:25em;">
+          <form action="{%url 'newopportunities'%}" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <label for="subject">title</label>
+            <input type="text" id="title" name="title" placeholder="title" value="{{Updopp.title}}">            
+            <label for="subject">Description</label>
+            <input type="text" id="description" name="description" placeholder="description" value="{{Updopp.description}}">
+            <label for="subject">Link</label>
+            <input type="text" id="link" name="link" placeholder="Opportunity Link">
+            <input type="submit" value="Submit">
+        
+          </form>
+        </div>
+        
+      </div>
+      <div class="mybtn">
+        <button onclick="location.href='{%url 'listopp'%}'" type="button">View All Opportunities</button>
+      </div>
+   
+    </section>
+{%endblock%}

@@ -1,0 +1,31 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Internship Confirmation</title>
+
+
+</head>
+<body style="width:816px;height:1056px;">
+	<div class="container" style="width:816px;height:1056px;margin-left:25%;margin-top:10em;">
+	<div class="date" style="margin-left:40em; margin-bottom: 5em; ">
+		<p>Date: <span id="date">{{Infos.date_requested}}</span></p>
+	</div>
+	<div class="Company" style="margin-left:40em;margin-bottom:2em;font-weight:bold;	">
+		<p>{{Infos.CompanyName}}</p>
+	</div>
+	<div class="content" style="margin-bottom : 3em;" >
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to {{Infos.student.FullName}}, who has applied to your department for a summer internship, is studying at Uskudar University, Faculty of Engineering and Natural Sciences, Software Engineering Department. In the Software Engineering department, there are two compulsory internships, one at the end of the second year and the other at the end of third year. The duration of each compulsory internship is 20 working days. Work Accident and Occupational Diseases Insurance Premiums between the dates of internship of the student are covered by our University. The named student has {{Infos.NumOfincintern}} compulsory internships. This document has been prepared to inform your institution.</p>
+
+	</div>
+	<div class="coordinator" style="margin-left:35em;">
+	<p style="margin-left:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software Engineering Internship Committee Member &nbsp;&nbsp;<h6 class="coordinatorname" style="margin-left:10em;">Dr.{{Infos.student.coordinator.FullName}}</h6></p>
+	
+	</div>
+	<div class="sign" style="margin-left:50em; margin-top:-10em;">
+		<img src="../../static/images/signature.png" style="width:80px;height:32px;margin-left:40em; margin-top:-20px;">
+	</div>
+
+
+</body>
+</html>

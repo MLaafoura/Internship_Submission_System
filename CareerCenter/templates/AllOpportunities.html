@@ -1,0 +1,16 @@
+{%extends "baseco.html"%}
+{%load static%}
+
+{%block content%}
+<section class="main">
+    {%for opp in oppo%}
+        <div class="oppor">
+            <div style="font-weight:bold;margin-bottom:1em;font-size:1.3em;">{{opp.title}}</div>
+            <div style="margin-bottom:1em;width:90%;margin-left:1.2em;">{{opp.description}}</div>
+            <a href='{{opp.link}}' target='_blank' style="font-weight:bold;">Opportunity link</a>
+            <button onclick="location.href='{%url 'uptodate' opp.pk%}'">Edit</button>
+            <button onclick="location.href='{%url 'deleteopp' opp.pk%}'">Delete</button>
+        </div>
+     {%endfor%}
+</section>
+{%endblock%}

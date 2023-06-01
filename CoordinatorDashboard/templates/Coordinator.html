@@ -1,0 +1,316 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coordinator Dashboard</title>
+  <link rel="stylesheet" href="{%static 'css/CoordinatorStyle.css'%}" />
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link rel="icon" href="{%static 'images/uiss_logo_minimalist.svg'%}" type="image/icon type">
+  <script>
+    function openForm() {
+      document.getElementById("Reject_Reason").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("Reject_Reason").style.display = "none";
+    }
+    </script>
+    <style>
+      td a  {
+        display:inline;
+      }
+      .success-message {
+        color: green;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 20px;
+      }
+.confirmform{
+  height:4em;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  width:110%;
+  background-color:#B1D8B7;
+  border:1em;
+  border-style: solid;
+  border-width: 1px;
+  border-color:#214e34;
+}
+.confirmform h2{
+  margin-left:1em;
+  color:#214e34;
+}
+.confirmform input{
+  width:10em;
+  height:2.5em;
+  vertical-align: middle;
+  margin-left:2em;
+  background:#214e34;
+  color:#f4fdff;
+  font-size:16px;
+  border-radius:7px;
+}
+.confirmform input:hover{
+  cursor:pointer;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+      
+      /* The Modal (background) */
+      .modal , .RepModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      
+      /* Modal Content */
+      .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 30%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+      }
+      
+      /* Add Animation */
+      @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0} 
+        to {top:0; opacity:1}
+      }
+      
+      @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+      }
+      
+      /* The Close Button */
+      .close , .close2{
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover, 
+      .close:focus , .close2:hover , .close2:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
+      .modal-header {
+        padding: 2px 16px;
+        background-color: #1D267D;
+        color: white;
+      }
+      
+      .modal-body {padding: 2px 16px;}
+      
+      .modal-footer {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+      }
+      .appformsub{
+        width:10em;
+        height:3em;
+        background-color: #b7c9e2;
+        margin:1em;
+      }
+      .appformsub:hover{
+        cursor:pointer;
+      }
+      .reasonofrejection{
+        width:100%;
+        height:10em;
+        margin:1em 0 1em 0 ;
+        border: 1px solid black;
+
+      }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src="{%static 'images/uiss_logo.svg'%}">
+         
+        </a></li>
+        <li><a href="{% url 'CoordinatorDashboard'%}">
+          <i class="fas fa-home"></i>
+          <span class="nav-item">Dashboard</span>
+        </a></li>
+        <li><a href="{% url 'CoordinatorMessages'%}">
+          <i class="fas fa-envelope"></i>
+          <span class="nav-item">Messages</span>
+        </a></li>
+        <li><a href="{% url 'CoordinatorOffLetter'%}">
+            <i class="fas fa-file"></i>
+            <span class="nav-item">Official Letter</span>
+          </a></li>
+        <li><a href="{%url 'logout'%}" class="logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+      </ul>
+    </nav>
+
+  
+  
+    <section class="main">
+      {%block content%}
+
+      {%endblock%}
+      {% if messages %}
+      <div class="success-message">
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+      <div class="main-top">
+        <h1>Welcome Dr. {{user.first_name}} {{user.last_name}}</h1>
+        
+      </div>
+      <div class="users">
+        <div class="card">
+          <img src="{%static 'images/Done.png'%}">
+          
+          <div class="per">
+            <h4>{{accepted_count}}</h4>
+          </div>
+        
+        </div>
+        <div class="card">
+          <img src="{%static 'images/Waiting.png'%}">
+          
+          <div class="per">
+            <h4>{{waiting_count}}</h4>
+          </div>
+        </div>
+        <div class="card">
+            <img src="{%static 'images/Rejected.png'%}">
+            
+            <div class="per">
+              <h4>{{cancelled_count}}</h4>
+            </div>
+          </div>
+      </div>
+
+      <section class="applications">
+        <div class="applications-list">
+          <h1>Applications information</h1>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Application Form</th>
+                <th>Status</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {%for request in Requests%}
+              <tr>
+                <td>{{request.sender.user.username}}</td>
+                <td>{{request.sender.FullName}}</td>
+                <td><button onclick="window.open('../{{request.ApplicationForm}}')">Preview</button> &nbsp;   
+                    &nbsp; &nbsp; &nbsp;  &nbsp; <button onclick="location.href='{%url 'UpdateStatus' request.id%}'">Accept</button>
+                    <button onclick="location.href='{%url 'rejection' request.id%}'">Reject</button>  
+                     
+                </td>
+               
+                <td>{{request.Status}}</td>
+              </tr>
+              {%endfor%}
+            
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!--My  Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Rejection Reason</h2>
+          </div>
+          <div class="modal-body">
+            <form method="POST" enctype="multipart/form-data" action="{%url 'appform'%}">
+              {%csrf_token%}
+                <textarea class="reasonofrejection"></textarea><br>
+            <input type="submit" name="appformsubmit" class="appformsub" value="Submit">
+            </form>
+          </div>
+          
+        </div>
+      
+      </div>  
+      <div class="pagination" style="margin-left:50%; width:25%;margin-top:1em;color:#050A30; font-size:1.4em;">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" style="display:inline;width:30%;color:#050A30; font-size:1em;">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}" style="display:inline; width:30%;"><i class="fa fa-arrow-left" aria-hidden="true" style="color:#050A30;font-size:1.4em;"></i></a>
+            {% endif %}
+            
+            <span class="current-page">{{ page_obj.number }}</span>
+            
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" style="display:inline; "><i class="fa fa-arrow-right" style="color:#050A30;font-size:1.4em;"></i></a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" style="display:inline; width:30%; color:#050A30;font-size:1em;">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+      <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("rejectform" + i);
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>  
+    </section>
+  </div>
+  
+</body>
+</html>

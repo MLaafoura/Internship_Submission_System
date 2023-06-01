@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@font-face {
+  font-family: "Poppins";
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+}
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  background: 	#eaf1f9;
+  width:98%;
+}
+nav{
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  width: 90px;
+  /* width: 280px; */
+  background: #fff;
+  overflow: hidden;
+  transition: 1s;
+}
+nav:hover{
+  width: 280px;
+  transition: 1s;
+}
+.logo{
+  text-align: center;
+  display: flex;
+  margin-top: 10px;
+  padding-bottom: 3rem;
+}
+
+.logo img{
+  width: 80%;
+  height: 90%;
+  margin-top:2em;
+}
+
+a{
+  position: relative;
+  width: 280px;
+  font-size: 14px;
+  color: rgb(85, 83, 83);
+  display: table;
+  padding: 10px;
+}
+nav .fa{
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.nav-item{
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+}
+a:hover{
+  background: #eee;
+}
+a:hover i{
+  color: 	#c0c0ca;
+  transition: 0.5s;
+}
+.logout{
+  position: absolute;
+  bottom: 0;
+}
+
+.container{
+  display: flex;
+}
+
+/* MAin Section */
+.main{
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+
+
+input[type=text] {
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical ;
+  }
+
+
+  input[type=submit] {
+    float:right;
+    margin-right:6em;
+    margin-top:1em;
+    width:14em;
+    height:3em;
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid 	#2f2d52;
+  }
+  
+  input[type=submit]:hover{
+    background-color:#2f2d52;
+    color:#fff;
+    transition: 0.5rem;
+  }
+  .container_form {
+    border-radius: 5px;
+    width:80%;
+    padding:2em;
+    margin-top:2em;
+    margin-left:6em;
+    background-color: #fff;
+    height:21em;
+    border-radius: 0.6em;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  
+.container_form label{
+    font-weight: bold;
+}
+#downoffletter{
+    height:8em
+}

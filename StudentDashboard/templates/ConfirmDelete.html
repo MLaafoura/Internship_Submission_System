@@ -1,0 +1,20 @@
+{%extends "base.html"%}
+
+ {%block content%}
+ <div class="myDiv">
+    <form method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+        <h4 class="confirmstring">Do you Want to Delete the message ? </h4>
+  <div class="buttons">
+    
+    <input type="submit" class="buttondel" value="Delete" style="background-color: #f44336;width:10em;margin-right:8em; border:none;border-radius:0;">
+    <input type="button" class="buttondel" value="Cancel" onclick="redirectToURL()">
+  </div>
+</form>
+</div>
+<script>
+    function redirectToURL() {
+      window.location.href = "{%url 'sentm'%}";
+    }
+  </script>
+ {%endblock%}

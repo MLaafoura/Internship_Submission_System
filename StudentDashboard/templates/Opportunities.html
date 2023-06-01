@@ -1,0 +1,117 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="{% static '/css/Studentoffletter.css' %}"/>
+  <link rel="icon" href="assets/images/uiss_logo_minimalist.svg" type="image/icon type">
+  <script src="https://use.fontawesome.com/b2310d6796.js"></script>
+  <style>
+        .container_form{
+          width:70%;
+          height:16em;
+          margin-left:17%;
+            
+        }
+        .oppinfos h1{
+          margin-top:-1em;
+        }
+        .container_form p{
+            margin:1em;
+            font-size:1.2em;
+        }
+        
+    
+        .oppor{
+          width:100%;
+          display-content:inline;
+        }
+        .oppimage{
+          float:left;
+          padding-right:1.5em;
+          margin-top:-1em;
+          padding-top:2em;
+          padding-bottom:1em;
+          border-right: 0.2em solid #00008B;
+        }
+
+        .oppinfos{
+          margin-left:14em;
+        }
+
+        .oppinfos a:hover{
+       
+            background-color:#05445E;
+            color:white;
+        }
+
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src="{% static '/images/uiss_logo.svg' %}">
+         
+        </a></li>
+        <li><a href="{% url 'StudentDashboard'%}">
+          <i class="fa fa-home"></i>
+          <span class="nav-item">Dashboard</span>
+        </a></li>
+        <li><a href="{%url 'create'%}">
+          <i class="fa fa-envelope"></i>
+          <span class="nav-item">Messages</span>
+            </a>
+      </li>
+        <li><a href="{%url 'offletter'%}">
+            <i class="fa fa-file"></i>
+            <span class="nav-item">Official Letter</span>
+          </a></li>
+          <li><a href="{%url 'InternOpportunities'%}">
+            <i class="fa fa-tasks"></i>
+            <span class="nav-item">Opportunities</span>
+          </a></li>
+        <li><a href="{%  url 'logout'%}" class="logout">
+          <i class="fa fa-sign-out"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+      </ul>
+    </nav>
+    
+
+    <section class="main">
+      <div class="main-top">
+        <h1>Internship Opportunities</h1>     
+      </div>
+
+      
+      {%for intern in opp%}
+     
+      <div class="container_form">
+        <div class="oppimage">
+          <img src="{%static 'images/test.jpg'%}" style="height:10em; width:10em;">
+        </div>
+        <div class="oppinfos">
+          <h1>{{intern.title}}</h1>
+          <p>{{intern.description}}</p>
+          <a href='{{intern.link}}' target='_blank' style="font-weight:bold;">Apply Now</a>
+
+        </div>
+      </div>
+      
+      {%endfor%}
+   
+
+
+    
+    </section>
+
+    
+  
+  </div>
+
+</body>
+</html>

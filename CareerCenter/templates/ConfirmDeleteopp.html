@@ -1,0 +1,21 @@
+{% extends "baseco.html" %}
+{%block content%}
+ 
+<section class="main">
+ 
+    <div class="main-top">
+      <h1>Confirm Delete</h1>
+      
+    </div>
+  
+      <div class="mybtn">
+        <form method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+        <button  type="submit">Confirm</button>
+        </form>
+        <button onclick="location.href='{%url 'listopp'%}'" type="button">Cancel</button>
+      </div>
+   
+    </section>
+
+{%endblock%}

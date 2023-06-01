@@ -1,0 +1,11 @@
+{%extends "Coordinator.html"%}
+{%block content%}
+<form method="POST" class="confirmform" enctype="multipart/form-data">
+    {%csrf_token%}
+    <input type="text" name="Notification" value="Your Application is Approved" hidden>
+    <input type="text" name="Status" value="Approved" hidden>
+    <h2>Approve {{studentchange.sender.FullName}}'s Application ?</h1>
+    <input type="submit" value="Confirm">
+</form>
+    
+{%endblock%}

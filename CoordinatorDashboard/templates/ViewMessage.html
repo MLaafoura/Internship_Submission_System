@@ -1,0 +1,21 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div class="myDiv">
+    <div id="subject">
+  <h2>{{viwemessage.Subject}}</h2>
+
+    </div>
+    <hr style="width:90%;">
+  <p style="display:block;">{{viwemessage.Message_content}}</p>
+  <div class="buttons">
+    <input type="button" class="button" value="Answer">
+    <input type="button" class="button" value="Back" style="background-color: grey;" onclick="redirectToURL()">
+  </div>
+</div>
+<script>
+    function redirectToURL() {
+      window.location.href = "{%url 'CoordinatorMessages'%}";
+    }
+  </script>
+{%endblock%}

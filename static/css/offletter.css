@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.container{
+    width:816px;
+    height:1056px;
+    margin-left:25%;
+    margin-top:10em;
+}
+.date{
+    margin-left:35em;
+    margin-bottom: 5em;
+}
+.Company{
+    margin-left:60%;
+    margin-bottom:2em;
+    font-weight:bold;	
+}
+.content{
+    margin-bottom : 3em;
+}
+.coordinator{
+    margin-left:40%;
+}
+.coordinatorname{
+    margin-left:40%;
+}
+.date{
+    margin-left:60%;
+}

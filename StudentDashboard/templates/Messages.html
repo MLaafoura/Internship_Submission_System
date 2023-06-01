@@ -1,0 +1,29 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div class="mybtn">
+  <button onclick="location.href='{%url 'receivedM'%}'" type="button">Incoming Messages</button>
+  <button onclick="location.href='{%url 'sentm'%}'" type="button">Outgoing Messages</button>
+</div><br><br>
+<div class="main-top">
+        <h1>Send a Message</h1>
+        
+      </div>
+      
+        <div class="container_form">
+          
+          <form method="POST" enctype="multipart/form-data" >
+            {% csrf_token %}      
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="Subject" placeholder="Subject">
+            <label for="subject">Message</label>
+            <textarea id="Message" name="Message_content" placeholder="Write your message here" style="height:200px"></textarea>
+            <input type="file" id="Message" name="Message_file">
+            <input type="submit" value="Send">
+          </form>
+        
+        
+        </div>
+ 
+      
+  {%endblock%}

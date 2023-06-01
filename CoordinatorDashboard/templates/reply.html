@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="main-top">
+    <h1>Reply to {{studentreply.sender.FullName}}</h1>
+    
+  </div>
+  <div class="users_form">
+    <div class="container_form">
+        <form method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+          <label for="receiver">Send To</label>
+          <select id="receiver" name="Receiver">
+            <option value="3" name="Receiver">3</option>
+            
+          </select>
+          <label for="subject">Subject</label>
+          <input type="text" id="sub" name="subject" placeholder="Subject">
+          <label for="content">Message</label>
+          <textarea id="message" name="Message_content" placeholder="Write your message here" style="height:200px"></textarea>
+          <input type="file" id="myFile" name="Message_file">
+          <input type="submit" value="Send">
+      
+        </form>
+      </div>
+      
+    </div>
+{%endblock%}

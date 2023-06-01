@@ -1,0 +1,105 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="{% static '/css/Studentoffletter.css' %}"/>
+  <link rel="icon" href="assets/images/uiss_logo_minimalist.svg" type="image/icon type">
+  <script src="https://use.fontawesome.com/b2310d6796.js"></script>
+  <style>
+    #num{
+      width: 100%; 
+      padding: 12px; 
+      border: 1px solid #ccc;
+      border-radius: 4px; 
+      box-sizing: border-box; 
+      margin-top: 6px; 
+      margin-bottom: 16px; 
+      resize: vertical ;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src="{% static '/images/uiss_logo.svg' %}">
+         
+        </a></li>
+        <li><a href="{% url 'StudentDashboard'%}">
+          <i class="fa fa-home"></i>
+          <span class="nav-item">Dashboard</span>
+        </a></li>
+        <li><a href="{%url 'create'%}">
+          <i class="fa fa-envelope"></i>
+          <span class="nav-item">Messages</span>
+            </a>
+      </li>
+        <li><a href="{%url 'offletter'%}">
+            <i class="fa fa-file"></i>
+            <span class="nav-item">Official Letter</span>
+          </a></li>
+          <li><a href="{%url 'InternOpportunities'%}">
+            <i class="fa fa-tasks"></i>
+            <span class="nav-item">Opportunities</span>
+          </a></li>
+        <li><a href="{%  url 'logout'%}" class="logout">
+          <i class="fa fa-sign-out"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+      </ul>
+    </nav>
+    
+
+    <section class="main">
+      <div class="main-top">
+        <h1>Official Letter Request</h1>
+        
+      </div>
+      
+        <div class="container_form" style="height:21em;">
+            <form method="POST" enctype="multipart/form-data">
+              {%csrf_token%}
+              <input type="text" name="transcript_status" value="1" hidden >
+              <label for="receiver" name="CompanyName">Company Name</label>
+              <input type="text" id="CompanyName" name="CompanyName" placeholder="Company Name">
+              <label for="subject" name="NumOfincintern"> Number of incomplete internships</label>
+              <select name="NumOfincintern" id="num">
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+              <label>Upload Your Transcript</label><br>
+              <input type="file" name="transcript" value="Upload Your Transcript"><br>
+              <input type="submit" value="Send Request">
+          
+            </form>
+          </div>
+          
+      
+        <br><br>
+        <div class="users_form" >
+            <div class="container_form" id="downoffletter">
+              <span style="font-size:12px; font-weight:bold; ">You can download the official letter once its available from here</span><br>
+                {%for offl in generatedletter%}
+                
+                <a href="{% url 'download_letter' offl.pk %}" class="btn btn-primary" style="background-color:#00008B; color:white; margin-top:10px; ">Download Letter</a>
+                {%empty%}
+                <a href="#" class="btn btn-primary" style="background-color:#00008B; color:white; margin-top:10px; width:30em;" disabled>Your Official Letter will be shown here once its generated</a>
+                {%endfor%}
+                  
+              
+                
+              </div>
+              
+            </div>
+    </section>
+
+    
+  
+  </div>
+
+</body>
+</html>
